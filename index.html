@@ -33,19 +33,14 @@
     .card:hover {
       transform: translateY(-5px);
     }
-    .code-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
     .code {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: bold;
+      margin-bottom: 10px;
       background: #f0f0f0;
       padding: 8px 14px;
       border-radius: 8px;
       direction: ltr;
-      margin-bottom: 10px;
     }
     button {
       background-color: #009688;
@@ -64,33 +59,34 @@
 <body>
   <div class="container">
     <div class="card">
-      <div class="code-title">هشت درصد تخفیف خرید اول</div>
-      <div class="code" id="first">first</div>
+      <div class="code" id="first">first - هشت درصد تخفیف خرید اول</div>
       <button onclick="copyToClipboard('first')">کپی</button>
     </div>
     <div class="card">
-      <div class="code-title">پنجاه هزارتومان تخفیف</div>
-      <div class="code" id="313">313</div>
+      <div class="code" id="313">313 - پنجاه هزارتومان تخفیف</div>
       <button onclick="copyToClipboard('313')">کپی</button>
     </div>
     <div class="card">
-      <div class="code-title">ارسال رایگان</div>
-      <div class="code" id="free">free</div>
+      <div class="code" id="free">free - ارسال رایگان</div>
       <button onclick="copyToClipboard('free')">کپی</button>
     </div>
     <div class="card">
-      <div class="code-title">سه درصد تخفیف روغن</div>
-      <div class="code" id="oil">oil</div>
+      <div class="code" id="oil">oil - 3درصد تخفیف روغن</div>
       <button onclick="copyToClipboard('oil')">کپی</button>
     </div>
   </div>
 
   <script>
     function copyToClipboard(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert(`کد "${text}" با موفقیت کپی شد!`);
-      });
+      const codeText = document.getElementById(id).innerText.split(' ')[0]; // فقط کد
+      const tempInput = document.createElement("input");
+      tempInput.value = codeText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      tempInput.setSelectionRange(0, 99999); // مخصوص موبایل
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      alert(`کد "${codeText}" با موفقیت کپی شد!`);
     }
   </script>
 </body>
