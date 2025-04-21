@@ -34,13 +34,19 @@
       transform: translateY(-5px);
     }
     .code {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: bold;
-      margin-bottom: 10px;
       background: #f0f0f0;
       padding: 8px 14px;
       border-radius: 8px;
       direction: ltr;
+      margin-bottom: 10px;
+    }
+    .description {
+      font-size: 0.95rem;
+      color: #333;
+      text-align: center;
+      margin-bottom: 12px;
     }
     button {
       background-color: #009688;
@@ -59,31 +65,35 @@
 <body>
   <div class="container">
     <div class="card">
-      <div class="code" id="first">first - هشت درصد تخفیف خرید اول</div>
+      <div class="code" id="first">first</div>
+      <div class="description">هشت درصد تخفیف خرید اول</div>
       <button onclick="copyToClipboard('first')">کپی</button>
     </div>
     <div class="card">
-      <div class="code" id="313">313 - پنجاه هزارتومان تخفیف</div>
+      <div class="code" id="313">313</div>
+      <div class="description">پنجاه هزارتومان تخفیف</div>
       <button onclick="copyToClipboard('313')">کپی</button>
     </div>
     <div class="card">
-      <div class="code" id="free">free - ارسال رایگان</div>
+      <div class="code" id="free">free</div>
+      <div class="description">ارسال رایگان</div>
       <button onclick="copyToClipboard('free')">کپی</button>
     </div>
     <div class="card">
-      <div class="code" id="oil">oil - 3درصد تخفیف روغن</div>
+      <div class="code" id="oil">oil</div>
+      <div class="description">۳ درصد تخفیف روغن</div>
       <button onclick="copyToClipboard('oil')">کپی</button>
     </div>
   </div>
 
   <script>
     function copyToClipboard(id) {
-      const codeText = document.getElementById(id).innerText.split(' ')[0]; // فقط کد
+      const codeText = document.getElementById(id).innerText;
       const tempInput = document.createElement("input");
       tempInput.value = codeText;
       document.body.appendChild(tempInput);
       tempInput.select();
-      tempInput.setSelectionRange(0, 99999); // مخصوص موبایل
+      tempInput.setSelectionRange(0, 99999);
       document.execCommand("copy");
       document.body.removeChild(tempInput);
       alert(`کد "${codeText}" با موفقیت کپی شد!`);
