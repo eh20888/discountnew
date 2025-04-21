@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>کدهای تخفیف برکت پلاس</title>
+  <style>
+    body {
+      font-family: Vazir, sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 600px;
+      width: 100%;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .code-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .code {
+      font-size: 1.3rem;
+      font-weight: bold;
+      background: #f0f0f0;
+      padding: 8px 14px;
+      border-radius: 8px;
+      direction: ltr;
+      margin-bottom: 10px;
+    }
+    button {
+      background-color: #009688;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #00796b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="code-title">هشت درصد تخفیف خرید اول</div>
+      <div class="code" id="first">first</div>
+      <button onclick="copyToClipboard('first')">کپی</button>
+    </div>
+    <div class="card">
+      <div class="code-title">پنجاه هزارتومان تخفیف</div>
+      <div class="code" id="313">313</div>
+      <button onclick="copyToClipboard('313')">کپی</button>
+    </div>
+    <div class="card">
+      <div class="code-title">ارسال رایگان</div>
+      <div class="code" id="free">free</div>
+      <button onclick="copyToClipboard('free')">کپی</button>
+    </div>
+    <div class="card">
+      <div class="code-title">سه درصد تخفیف روغن</div>
+      <div class="code" id="oil">oil</div>
+      <button onclick="copyToClipboard('oil')">کپی</button>
+    </div>
+  </div>
+
+  <script>
+    function copyToClipboard(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert(`کد "${text}" با موفقیت کپی شد!`);
+      });
+    }
+  </script>
+</body>
+</html>
